@@ -3,17 +3,19 @@ import win10toast
 
 notification = win10toast.ToastNotifier()
 
-notify_after = float(input("(in minutes) Notify after: ")) * 60
+print("\nThe program is running... (Do not close this window!)\n")
 
-print("The program is running... (Do not close this window!)")
-print()
 
-time.sleep(notify_after)
-while True:
-
-    print("Notified!")
-    print(f"Next notification in {notify_after/60} mins.")
-    print()
-    
-    notification.show_toast("20-20-20", "Look Away for 20 seconds!", duration=4)
+def notify(notify_after):
     time.sleep(notify_after)
+
+    while True:
+
+        print("Notified!")
+        print(f"Next notification in {notify_after/60} mins.\n")
+        
+        notification.show_toast("20-20-20", "Take your eyes off the screen for 20 secs!", duration=4)
+        
+        time.sleep(notify_after)
+
+notify(float(input("Notify in every ? minutes: ")) * 60)
